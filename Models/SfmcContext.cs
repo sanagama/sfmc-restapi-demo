@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Serilog;
 using SfmcRestApiDemo.Models;
 
-namespace SfmcRestApiDemo
+namespace SfmcRestApiDemo.Models
 {
     public class SfmcContext : DbContext
     {

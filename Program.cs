@@ -9,6 +9,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Serilog;
 using Serilog.Events;
+using SfmcRestApiDemo.Models;
 
 namespace SfmcRestApiDemo
 {
@@ -63,12 +64,13 @@ namespace SfmcRestApiDemo
         private static IWebHost BuildWebHost()
         {
             Log.Information("Building Web Host...");
+            
             var host = new WebHostBuilder()
                 .UseKestrel()
                 .UseUrls("http://*:5000") // listen on port 5000 on all network interfaces
                 .UseContentRoot(Directory.GetCurrentDirectory())
                 .UseSerilog()
-                .UseSerilog()
+                .UseIISIntegration()
                 .UseStartup<Startup>()
                 .Build();
             

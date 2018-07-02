@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using Microsoft.Extensions.Logging;
 using SfmcRestApiDemo.Models;
 
-namespace SfmcRestApiDemo
+namespace SfmcRestApiDemo.Models
 {
     internal class SfmcDemoInitializer
     {
@@ -141,7 +141,7 @@ namespace SfmcRestApiDemo
             };
 
             _context.Emails.AddRange(emails);
-            _context.SaveChanges();
+            _context.SaveChanges(acceptAllChangesOnSuccess:true);
         }
     }
 }

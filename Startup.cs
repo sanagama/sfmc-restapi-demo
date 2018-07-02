@@ -10,6 +10,8 @@ using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using Microsoft.EntityFrameworkCore;
+using SfmcRestApiDemo.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace SfmcRestApiDemo
 {
@@ -30,6 +32,13 @@ namespace SfmcRestApiDemo
         {
             // Add CORS
             services.AddCors();
+
+            // Add API versioning
+            services.AddApiVersioning( o => {
+                o.ReportApiVersions = true;
+                o.AssumeDefaultVersionWhenUnspecified = true;
+                o.DefaultApiVersion = new ApiVersion(2, 0);
+            });
 
             // Lower-case URLs
             services.AddRouting(options => options.LowercaseUrls = true);
@@ -52,7 +61,6 @@ namespace SfmcRestApiDemo
             {
                 options.UseSqlite("Data Source=./Data/SfmcRestApiDemo.db");
             });
-
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
